@@ -1,17 +1,18 @@
 import express from "express";
 import http from "http";
 import { Server } from "socket.io";
+import {
+  ClientToServerEvents,
+  InterServerEvents,
+  ServerToClientEvents,
+  SocketData,
+} from "../../types";
 
 const app = express();
 
 app.get("/", (_req, res) => {
   res.send({ uptime: process.uptime() });
 });
-
-interface ClientToServerEvents {}
-interface ServerToClientEvents {}
-interface InterServerEvents {}
-interface SocketData {}
 
 const server = http.createServer(app);
 const io = new Server<
